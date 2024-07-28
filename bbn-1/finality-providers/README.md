@@ -39,8 +39,8 @@ requirements:
 - having participated in the
 [Babylon testnet-4](https://github.com/babylonchain/networks/tree/ac531139d5a75e575b34a80c9f8fc841cc33adab/bbn-test-4),
 - to go through a know your business (KYB) process conducted by Babylon Labs, and
-- to submit a pull request (PR) before the deadline of **August 16th, end of
-the day (EoD) anywhere on earth (AoE)**.
+- to submit a pull request (PR), and the deadline is **August 7th, end of the
+day (EoD) anywhere on earth (AoE)**.
 
 The pull request created should contain the finality provider's information
 combined with its EOTS public key, and a signature signed over the information
@@ -93,7 +93,7 @@ chains and earn commissions.
 
 The EOTS daemon is utilized to create the EOTS keys of the finality provider.
 To follow this guide, please use the
-[eotsd v0.4.0](https://github.com/babylonlabs-io/finality-provider/releases/tag/v0.4.0)
+[eotsd v0.3.0](https://github.com/babylonlabs-io/finality-provider/releases/tag/v0.3.0)
 version. This is a Golang project and requires version 1.21 or later. Install
 Go by following the instructions in the
 [official Go installation guide](https://golang.org/doc/install).
@@ -106,13 +106,13 @@ $ git clone https://github.com/babylonlabs-io/finality-provider.git
 Cloning into 'finality-provider'...
 ```
 
-Checkout to the v0.4.0 release tag
+Checkout to the v0.3.0 release tag
 
 ```bash
 $ cd finality-provider # cd into the project directory
-$ git checkout v0.4.0
+$ git checkout v0.3.0
 
-Note: switching to 'v0.4.0'.
+Note: switching to 'v0.3.0'.
 ```
 
 At the root of the finality provider repository install the binaries
@@ -259,10 +259,10 @@ the finality provider icon, the same way Cosmos-SDK uses for validators.
 The commission will be parsed as a decimal:
   - `"1.00"` represents 100% commission.
   - `"0.10"` represents  10% commission.
-  - `"0.03"` represents  03% commission.
+  - `"0.01"` represents  01% commission.
 
 **⚠ Warning!**
-The minimum commission value accepted is 3%. It will remain immutable and can't
+The minimum commission value accepted is 5%. It will remain immutable and can't
 be changed during the first phase of the Babylon mainnet. Please, define the
 commission rate wisely. Bitcoin stakers may earn various types of rewards. The
 commission rate you set affects every commission you earn on such rewards
@@ -335,21 +335,28 @@ Verification is successful!
 ```
 
 The pull request should follow the below template:
+<!-- TODO: update links once move to networks -->
 
 ```markdown
 # New ${nickname} Finality Provider
 
+Follow the [README.md](xxx new link) instructions
+to generate information.
+
 ## Checklist
 
-- [ ] I have followed the finality provider information registry
-[guide](https://github.com/babylonlabs-io/networks/blob/main/bbn-1/finality-providers/README.md)
-- [ ] I have backed up my mnemonic
-- [ ] I have read and agree to the [Babylon Ecosystem Participant License](https://docs.babylonlabs.io/assets/files/babylon-ecosystem-participant-license.pdf) and the [Babylon Ecosystem Participant Agreement](https://docs.babylonlabs.io/assets/files/babylon-ecosystem-participant-agreement.pdf).
+- [ ] [Create EOTS Key](xxx new link)
+- [ ] Backup Mnemonic
+- [ ] Generate Finality Provider Information
+- [ ] Input the information into a file under `bbn-1/finality-providers/registry/{nickname}.json`
+- [ ] [Sign the file](xxx new link)
+- [ ] Input the signature into a file under `bbn-1/finality-providers/sigs/{nickname}.sig`
+- [ ] Accept [terms and conditions](https://link-to-terms.com)
 
 > [!CAUTION]
 > The loss of the (generated keys + mnemonic) makes the finality provider
 useless and unable to provide finality, which would lead to no transition to
-later phases of the Babylon network.
+later phases of the Babylon networks.
 ```
 
 ### 6. Modifying Finality Provider Information
